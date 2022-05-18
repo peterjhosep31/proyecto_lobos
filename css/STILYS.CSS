@@ -1,0 +1,92 @@
+h1{
+    text-align: right;
+    color: aqua;
+    border:5px solid darkblue;
+    background:gray;
+    border-radius: 10px;
+    padding: 40px 40px 40px 50px;
+}
+h2{
+    text-align: center;
+    font-size: 50px;
+    color:rgb(31, 31, 31)    
+}
+
+body{
+    background:url(../images/fino_señores.jpg);
+    background-size: cover;
+    font-family: cursive;
+
+}
+.logo{
+    float: left;
+    padding: auto;
+    height:150px;
+    width:150px
+}
+.agresivo{
+    float: right;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 430px;
+    width: 950px;
+}
+.agresivo1{
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 430px;
+    width: 950px;
+}
+.CONTENIDO{
+    border: 1px solid blue;
+    background-color:rgba(169, 169, 169, 0.637);
+    border-radius: 15px;
+    padding: 20px 15px 10px 15px;
+}
+.logo{
+    width: 100px;
+    height: 100px;
+}
+.listaPadre{
+    columns:2;
+    text-align: center;
+}
+.lista{
+    float:left
+}
+.enDondeviven{
+    align-self: baseline;  
+    float: left; 
+}
+
+
+nav ul{
+    background:transparent;
+    width:100%;
+    list-style-type: none;
+    text-align:center;
+
+}
+
+ nav li{
+     display:inline-flex;
+ }
+ nav a{
+     width:500px;
+     color: blue;
+     padding: 10px;
+     text-decoration: none;
+ }
+ nav li a{
+     background:rgba(75,75,75,0.6);
+     border-radius:8px;
+ }
+ nav li a:hover{
+     background-color: aqua;
+     border-radius:15px
+
+ }
+ nav li a:active{
+     background-color: darkblue;
+     border-radius:15px;
+ }
