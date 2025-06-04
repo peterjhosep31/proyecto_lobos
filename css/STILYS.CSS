@@ -1,25 +1,70 @@
-h1{
-    border:5px solid darkblue;
-    background:gray;
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    border: 5px solid darkblue;
+    background: gray;
     border-radius: 10px;
     padding: 40px 40px 40px 50px;
     display: flex;
     align-items: center;
     height: 4rem;
+    margin: 0.5rem;
+    justify-content: space-between;
+
+    nav {
+        display: contents;
+    }
+
+    nav ul {
+        background: transparent;
+        list-style-type: none;
+        text-align: center;
+    }
+
+    nav li {
+        display: inline-flex;
+        min-width: 10rem;
+        margin: 0 10px;
+    }
+    nav a {
+        color: blue;
+        padding: 10px;
+        text-decoration: none;
+        background: rgba(75, 75, 75, 0.6);
+        border-radius: 8px;
+        min-width: 100%;
+    }
+
+    nav li a:hover {
+        background-color: aqua;
+        border-radius: 15px;
+        transition: 1s;
+    }
+    nav li a:active {
+        background-color: darkblue;
+        border-radius: 15px;
+    }
 }
-h2{
+
+h1 {
+    display: flex;
+    align-items: center;
+}
+h2 {
     text-align: center;
     font-size: 50px;
-    color:rgb(31, 31, 31)    
+    color: rgb(31, 31, 31);
 }
 
-body{
-    background:url(../images/fino_señores.jpg);
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.705)),
+        url(../images/fino_señores.jpg);
     background-size: cover;
     font-family: cursive;
-
 }
-
 
 .logo {
     float: left;
@@ -28,27 +73,27 @@ body{
     width: none;
     mix-blend-mode: darken;
 }
-.agresivo{
+.agresivo {
     float: right;
     border: 1px solid black;
     border-radius: 10px;
     height: 430px;
     width: 950px;
 }
-.agresivo1{
+.agresivo1 {
     border: 1px solid black;
     border-radius: 10px;
     height: 430px;
     width: 950px;
 }
-.CONTENIDO{
+.CONTENIDO {
     border: 1px solid blue;
-    background-color:rgba(169, 169, 169, 0.637);
+    background-color: rgba(169, 169, 169, 0.637);
     border-radius: 15px;
-    padding: 20px 15px 10px 15px;
+    padding: 0 3rem;
 }
 
-.CONTENIDO  > img:nth-child(even) {
+.CONTENIDO > img:nth-child(even) {
     float: left;
     margin: 0 15px 10px 0;
 }
@@ -64,51 +109,37 @@ img:not(.logo) {
     margin-bottom: 10px;
 }
 
- p {
-    display:flex;
+p {
+    display: flex;
     flex-direction: column;
     margin-bottom: 2rem;
- }
-
-.listaPadre{
-    columns:2;
-    text-align: center;
-}
-.lista{
-    float:left
-}
-.enDondeviven{
-    align-self: baseline;  
-    float: left; 
 }
 
-
-nav ul{
-    background:transparent;
-    width:100vw;
-    list-style-type: none;
-    text-align:center;
-
+.listaPadre {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 10rem 1.5rem 10rem;
 }
 
- nav li{
-     display:inline-flex;
- }
- nav a{
-     color: blue;
-     padding: 10px;
-     text-decoration: none;
- }
- nav li a{
-     background:rgba(75,75,75,0.6);
-     border-radius:8px;
- }
- nav li a:hover{
-     background-color: aqua;
-     border-radius:15px
+.enDondeviven {
+    align-self: baseline;
+    float: left;
+}
 
- }
- nav li a:active{
-     background-color: darkblue;
-     border-radius:15px;
- }
+.imagesFinal {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+@media (max-width: 1000px) {
+    .header {
+        justify-content: space-between;
+
+        nav ul {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
