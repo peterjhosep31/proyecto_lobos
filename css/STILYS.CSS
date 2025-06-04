@@ -1,99 +1,304 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    /* Add box-sizing for easier layout management */
 }
 
 .header {
-    border: 5px solid darkblue;
-    background: gray;
+    border: 2px solid #002244;
+    /* Darker blue border */
+    background: rgba(128, 128, 128, 0.9);
+    /* Slightly more opaque for fixed header */
     border-radius: 10px;
-    padding: 40px 40px 40px 50px;
+    padding: 15px 20px;
+    /* Reduced padding for better mobile experience */
     display: flex;
     align-items: center;
-    height: 4rem;
     margin: 0.5rem;
     justify-content: space-between;
+    flex-wrap: wrap;
+    /* Allow header items to wrap on smaller screens */
+    position: fixed;
+    /* Make header fixed */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    /* Ensure header stays on top */
+    backdrop-filter: blur(5px);
+    /* Add backdrop blur for better visibility */
+    min-height: 80px;
+    /* Minimum height for consistency */
 
     nav {
-        display: contents;
+        display: flex;
+        /* Use flex for nav as well */
+        align-items: center;
     }
 
     nav ul {
         background: transparent;
         list-style-type: none;
         text-align: center;
+        display: flex;
+        /* Make nav items align horizontally */
+        padding: 0;
+        /* Remove default ul padding */
     }
 
     nav li {
-        display: inline-flex;
-        min-width: 10rem;
+        /* display: inline-flex; Remove, as flex on ul handles this */
+        min-width: auto;
+        /* Let content define width */
         margin: 0 10px;
     }
+
     nav a {
-        color: blue;
-        padding: 10px;
+        color: #E0E0E0;
+        /* Lighter text color for better contrast */
+        padding: 12px 18px;
+        /* Increased padding for better clickability */
         text-decoration: none;
-        background: rgba(75, 75, 75, 0.6);
+        background: rgba(50, 50, 50, 0.7);
+        /* Darker semi-transparent background */
         border-radius: 8px;
-        min-width: 100%;
+        /* min-width: 100%; Remove, let content define width */
+        font-weight: bold;
+        /* Make nav links bolder */
+        transition: background-color 0.3s, color 0.3s;
+        /* Smooth transitions */
     }
 
     nav li a:hover {
-        background-color: aqua;
-        border-radius: 15px;
-        transition: 1s;
+        background-color: #007BFF;
+        /* Brighter blue on hover */
+        color: #FFFFFF;
+        /* White text on hover */
+        border-radius: 8px;
+        /* Consistent border-radius */
+        /* transition: 1s; Handled by the general transition on nav a */
     }
+
     nav li a:active {
-        background-color: darkblue;
-        border-radius: 15px;
+        background-color: #003366;
+        /* Darker blue on active/click */
+        color: #CCCCCC;
+        /* Slightly dimmer text on active */
+        border-radius: 8px;
+        /* Consistent border-radius */
     }
+
+    nav li a.active {
+        background-color: #007BFF;
+        /* Blue background for active page */
+        color: #FFFFFF;
+        /* White text for active page */
+        border-radius: 8px;
+    }
+}
+
+/* Hamburger menu styles */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.hamburger-line {
+    width: 25px;
+    height: 3px;
+    background-color: #FFFFFF;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+/* Animation for hamburger menu */
+.menu-toggle.active .hamburger-line:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.menu-toggle.active .hamburger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active .hamburger-line:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
 h1 {
     display: flex;
     align-items: center;
+    color: #FFFFFF;
+    /* White color for the main title */
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    /* Responsive font size */
+    margin-right: 20px;
+    /* Add some space between title and nav */
+    text-align: center;
+    /* Center text on smaller screens */
 }
+
 h2 {
     text-align: center;
-    font-size: 50px;
-    color: rgb(31, 31, 31);
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    /* Responsive font size */
+    color: #EFEFEF;
+    /* Lighter color for H2 */
+    margin-top: 1.5rem;
+    /* Add margin above H2 */
+    margin-bottom: 1rem;
+    /* Add margin below H2 */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    /* Add subtle text shadow */
 }
 
 body {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.705)),
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
         url(../images/fino_señores.jpg);
     background-size: cover;
-    font-family: cursive;
+    background-attachment: fixed;
+    /* Keep background fixed during scroll */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* More modern font stack */
+    color: #D0D0D0;
+    /* Default text color for the body */
+    line-height: 1.6;
+    /* Improve readability */
+    padding-top: 140px;
+    /* Add padding to account for fixed header */
 }
 
 .logo {
-    float: left;
-    padding: auto;
-    height: 20vh;
-    width: none;
-    mix-blend-mode: darken;
-}
-.agresivo {
-    float: right;
-    border: 1px solid black;
-    border-radius: 10px;
-    height: 430px;
-    width: 950px;
-}
-.agresivo1 {
-    border: 1px solid black;
-    border-radius: 10px;
-    height: 430px;
-    width: 950px;
-}
-.CONTENIDO {
-    border: 1px solid blue;
-    background-color: rgba(169, 169, 169, 0.637);
-    border-radius: 15px;
-    padding: 0 3rem;
+    /* float: left; Remove float, flexbox handles alignment */
+    padding: 0;
+    /* Remove padding, handled by header */
+    height: clamp(60px, 8vw, 80px);
+    /* Responsive logo height */
+    width: auto;
+    /* Maintain aspect ratio */
+    mix-blend-mode: normal;
+    /* Changed from darken for better visibility on varied backgrounds */
+    margin-right: 15px;
+    /* Space between logo and title text */
 }
 
-.CONTENIDO > img:nth-child(even) {
+.agresivo {
+    /* float: right; Will be handled by flex in .imagesFinal */
+    border: 3px solid #007BFF;
+    /* Blue border to match site theme */
+    border-radius: 12px;
+    height: 250px;
+    /* Fixed height for consistency */
+    width: 100%;
+    /* Full width of container */
+    max-width: 400px;
+    /* Maximum width */
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    /* Blue shadow to match border */
+    object-fit: contain;
+    /* Keep full image visible without cropping */
+    object-position: center;
+    /* Center the image */
+    background-color: rgba(40, 40, 40, 0.8);
+    /* Dark background for letterboxing */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth hover effect */
+}
+
+.agresivo:hover {
+    transform: scale(1.02);
+    /* Slight zoom on hover */
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.5);
+    /* Enhanced shadow on hover */
+}
+
+.agresivo1 {
+    border: 3px solid #007BFF;
+    /* Blue border to match site theme */
+    border-radius: 12px;
+    height: 250px;
+    /* Fixed height for consistency */
+    width: 100%;
+    /* Full width of container */
+    max-width: 400px;
+    /* Maximum width */
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    /* Blue shadow to match border */
+    object-fit: contain;
+    /* Keep full image visible without cropping */
+    object-position: center;
+    /* Center the image */
+    background-color: rgba(40, 40, 40, 0.8);
+    /* Dark background for letterboxing */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth hover effect */
+}
+
+.agresivo1:hover {
+    transform: scale(1.02);
+    /* Slight zoom on hover */
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.5);
+    /* Enhanced shadow on hover */
+}
+
+.CONTENIDO {
+    border: 1px solid #003366;
+    /* Darker blue border for content */
+    background-color: rgba(40, 40, 40, 0.75);
+    /* Darker, more transparent background */
+    border-radius: 15px;
+    padding: clamp(1rem, 4vw, 3rem);
+    /* Responsive padding */
+    margin: 2rem auto;
+    /* Increased top margin and center content */
+    max-width: 1200px;
+    /* Max width for content for better readability on large screens */
+    width: 90%;
+    /* Responsive width */
+}
+
+/* Clear floats for images inside .CONTENIDO - using modern CSS, direct float might not be needed if structure changes */
+.CONTENIDO::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.CONTENIDO>p>h3 {
+    /* Style h3 within p tags specifically if that's the structure */
+    font-size: 1.8em;
+    color: #FFD700;
+    /* Gold color for subheadings */
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.CONTENIDO img {
+    /* General image styling within content */
+    border-radius: 8px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.CONTENIDO>p>img.enDondeViven,
+/* More specific selector for these images */
+.CONTENIDO>img.enDondeViven {
+    /* If img is a direct child */
+    float: left;
+    margin: 0 20px 15px 0;
+    /* Adjusted margins */
+    max-width: 300px;
+    /* Control max width */
+    height: auto;
+}
+
+/* Remove alternating float for simplicity, can be added back if desired */
+/* .CONTENIDO > img:nth-child(even) {
     float: left;
     margin: 0 15px 10px 0;
 }
@@ -101,45 +306,340 @@ body {
 .CONTENIDO img:nth-child(odd) {
     float: right;
     margin: 0 0 10px 15px;
-}
+} */
 
 img:not(.logo) {
-    width: 20rem;
+    /* width: 20rem; Remove fixed width, use max-width for responsiveness */
+    max-width: 100%;
+    /* Ensure images are responsive */
+    height: auto;
+    /* Maintain aspect ratio */
     margin-right: 15px;
     margin-bottom: 10px;
 }
 
 p {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 2rem;
+    /* display: flex; Remove flex from p, not usually needed */
+    /* flex-direction: column; */
+    margin-bottom: 1.5rem;
+    /* Adjusted margin */
+    font-size: 1.1em;
+    /* Slightly larger paragraph font size */
+    text-align: justify;
+    /* Justify text for a cleaner look */
 }
 
 .listaPadre {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    margin: 0 10rem 1.5rem 10rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    /* Responsive grid columns */
+    gap: 1rem;
+    /* Add gap between grid items */
+    margin: 1rem 2rem 1.5rem 2rem;
+    /* Adjusted margins */
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.listaPadre li {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    color: #EAEAEA;
 }
 
 .enDondeviven {
-    align-self: baseline;
-    float: left;
+    /* This class was misspelled as enDondeViven in habitat.html */
+    align-self: center;
+    /* Center image if its parent is flex */
+    /* float: left; Already handled by more specific selector */
+    max-width: 300px;
+    /* Ensure consistency */
+    height: auto;
+    border-radius: 8px;
+    margin: 10px auto 15px auto;
+    /* Center block images if not floated */
+    display: block;
+    /* For centering with auto margins */
 }
 
 .imagesFinal {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    /* Center the images */
+    align-items: center;
+    /* Align items vertically */
     width: 100%;
-    margin-top: 2rem;
+    margin: 3rem auto 2rem auto;
+    /* Center container and add spacing */
+    padding: 0 2rem;
+    /* Add padding */
+    gap: 2rem;
+    /* Increase gap between images */
+    flex-wrap: wrap;
+    /* Allow images to wrap on smaller screens */
+    max-width: 1000px;
+    /* Limit maximum width of container */
 }
 
-@media (max-width: 1000px) {
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 100px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 100px);
+        background: rgba(40, 40, 40, 0.95);
+        backdrop-filter: blur(10px);
+        transition: left 0.3s ease;
+        z-index: 999;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-menu ul {
+        flex-direction: column;
+        padding: 2rem 0;
+        height: 100%;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    
+    .nav-menu li {
+        margin: 15px 0;
+        width: 80%;
+    }
+    
+    .nav-menu a {
+        display: block;
+        text-align: center;
+        font-size: 1.2rem;
+        padding: 15px 20px;
+        width: 100%;
+        background: rgba(50, 50, 50, 0.8);
+        border: 2px solid #007BFF;
+    }
+    
     .header {
         justify-content: space-between;
+        flex-direction: row;
+        height: auto;
+        min-height: 90px;
+    }
+    
+    h1 {
+        margin-right: 0;
+        flex: 1;
+    }
+}
+
+/* Responsive adjustments for medium screens (tablets) */
+@media (max-width: 768px) and (min-width: 481px) {
+    .imagesFinal {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 0 2rem;
+    }
+    
+    .agresivo,
+    .agresivo1 {
+        max-width: 70%;
+        min-width: 300px;
+        align-self: center;
+    }
+}
+
+/* Responsive adjustments for small mobile screens */
+@media (max-width: 480px) {
+    .imagesFinal {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 0.5rem;
+        margin-top: 1rem;
+    }
+    
+    .agresivo,
+    .agresivo1 {
+        max-width: 100%;
+        min-width: unset;
+        width: 100%;
+    }
+    
+    .CONTENIDO {
+        width: 98%;
+        margin: 1rem auto;
+        padding: 0.8rem;
+    }
+}
+
+@media (max-width: 1000px) and (min-width: 769px) {
+    .header {
+        justify-content: center;
+        /* Center items in header on smaller screens */
+        flex-direction: column;
+        /* Stack header items vertically */
+        padding: 15px;
 
         nav ul {
-            display: flex;
             flex-direction: column;
+            /* Stack nav items vertically */
+            width: 100%;
+            /* Full width for nav ul */
         }
+
+        nav li {
+            margin: 8px 0;
+            /* Adjust margin for vertical layout */
+            width: 100%;
+            /* Full width for nav li */
+        }
+
+        nav a {
+            display: block;
+            /* Make links take full width of li */
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2em;
+            /* Reduce H1 size */
+            margin-bottom: 10px;
+            /* Add margin below H1 when stacked */
+            text-align: center;
+        }
+    }
+
+    .CONTENIDO {
+        padding: 1rem 1.5rem;
+        /* Reduce padding on smaller screens */
+    }
+
+    .CONTENIDO>p>img.enDondeViven,
+    .CONTENIDO>img.enDondeViven {
+        float: none;
+        /* Disable float */
+        display: block;
+        /* Make images block for centering */
+        margin: 15px auto;
+        /* Center images */
+        max-width: 80%;
+        /* Allow images to be larger percentage of container */
+    }
+    .imagesFinal {
+        flex-direction: column;
+        /* Stack final images vertically */
+        gap: 1.5rem;
+        /* Increase gap between stacked images */
+        padding: 0 2rem;
+        /* Add more padding */
+    }
+
+    .agresivo,
+    .agresivo1 {
+        max-width: 80%;
+        /* Allow images to take more width */
+        min-width: 250px;
+        /* Reduce minimum width for tablets */
+        margin-bottom: 0;
+        /* Remove margin since we use gap now */
+    }
+
+    .agresivo,
+    .agresivo1 {
+        max-width: 90%;
+        /* Allow images to take more width */
+        margin-bottom: 1rem;
+        /* Add margin between stacked images */
+    }
+
+    p {
+        font-size: 1em;
+        /* Adjust paragraph font size */
+    }
+
+    h2 {
+        font-size: 2.2em;
+        /* Adjust H2 font size */
+    }
+
+    .CONTENIDO>p>h3 {
+        font-size: 1.5em;
+        /* Adjust H3 font size */
+    }
+}
+
+@media (max-width: 600px) {
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .header {
+        padding: 10px 15px;
+        min-height: 80px;
+    }
+
+    h1 {
+        font-size: clamp(1.2rem, 4vw, 1.8rem);
+    }
+
+    .logo {
+        height: clamp(50px, 6vw, 60px);
+    }
+
+    .CONTENIDO {
+        padding: 1rem;
+        width: 95%;
+    }
+
+    h2 {
+        font-size: clamp(1.5rem, 6vw, 1.8rem);
+    }
+
+    .CONTENIDO>p>h3 {
+        font-size: clamp(1.1rem, 4vw, 1.3rem);
+    }
+
+    .listaPadre {
+        grid-template-columns: 1fr;
+        /* Single column for very small screens */
+        margin: 1rem 0.5rem;
+    }
+    
+    .nav-menu {
+        top: 80px;
+        height: calc(100vh - 80px);
+    }
+    
+    .nav-menu a {
+        font-size: 1.1rem;
+        padding: 12px 18px;
+    }
+    
+    .imagesFinal {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 1rem;
+        margin-top: 1.5rem;
+    }
+    
+    .agresivo,
+    .agresivo1 {
+        max-width: 95%;
+        /* Take almost full width on mobile */
+        min-width: unset;
+        /* Remove minimum width constraint */
+        width: 100%;
+        /* Full width on mobile */
+        height: 250px;
+        /* Maintain uniform height even on mobile */
     }
 }
