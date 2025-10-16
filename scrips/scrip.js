@@ -2,7 +2,7 @@
 
 class includeNav {
     async getNav() {
-        let nav = await fetch("./components/nav.html");
+        let nav = await fetch("components/nav.html");
         if (!nav.ok) return;
 
         let contentHtml = await nav.text();
