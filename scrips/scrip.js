@@ -20,9 +20,9 @@ class includeNav {
     setActiveNavItem(headerElement) {
         const currentPage = window.location.pathname.split('/').pop() || 'index.html';
         const navLinks = headerElement.querySelectorAll('nav a');
-
         navLinks.forEach(link => {
             const href = link.getAttribute('href');
+
             if (href === currentPage || (currentPage === '' && href === 'index.html')) {
                 link.classList.add('active');
             }
@@ -33,7 +33,7 @@ class includeNav {
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
 
-        if (menuToggle && navMenu) {
+        if (menuToggle && navMenu) { 
             menuToggle.addEventListener('click', () => {
                 menuToggle.classList.toggle('active');
                 navMenu.classList.toggle('active');

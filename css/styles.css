@@ -182,10 +182,11 @@ body {
     /* Responsive logo height */
     width: auto;
     /* Maintain aspect ratio */
-    mix-blend-mode: normal;
-    /* Changed from darken for better visibility on varied backgrounds */
     margin-right: 15px;
     /* Space between logo and title text */
+    /* Make white background invisible by blending */
+    mix-blend-mode: darken;
+    /* Darken mode makes white invisible on darker backgrounds */
 }
 
 .agresivo {
