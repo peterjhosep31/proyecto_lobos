@@ -1,0 +1,6 @@
+# Evitar subir credenciales o carpetas de cloudflared
+cloudflared/
+*.key
+*.pem
+# Evitar subir el docker-compose real con credenciales locales
+docker-compose.yml
